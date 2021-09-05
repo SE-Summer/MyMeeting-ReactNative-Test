@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
     "@babel/preset-env": "^7.15.4",
     "@babel/runtime": "^7.14.6",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
@@ -75,9 +76,14 @@
       "ts",
       "tsx"
     ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      ".*\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    },
     "transformIgnorePatterns": [
-      "node_modules/(?!(@react-native|react-native)/)"
-    ]
+      "node_modules/(?!(@react-native|react-native|react-native-vector-icons)/)"
+    ],
+    "setupFilesAfterEnv": ["./jest.setup.js"]
   },
   "transform": {
     "^.+\\.[t|j]sx?$": "babel-jest"
